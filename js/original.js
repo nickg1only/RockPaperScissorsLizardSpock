@@ -71,7 +71,7 @@ var game = function(){
     console.log("Computer chose: " + computerChoice);
     console.log(result);
 }
-var playAgain = prompt("Wanna play 'Rock, Paper, Scissors, and Rope!'? y/n")
+var playAgain = prompt("Wanna play 'Rock, Paper, Scissors, and Rope!'? Y/N").toLowerCase();
 while(playAgain !== "n" && playAgain !== "no"){
     setup()
     game()
