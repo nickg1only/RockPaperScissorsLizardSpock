@@ -24,6 +24,7 @@
       }
     </style>
 
+    <script src="js/game.js"></script>
   </head>
   <body>
 
@@ -35,10 +36,11 @@
     <h1> Rock, Paper, Scissors, Rope</h1>
     <h1> <small>A variant of the classic hand game</small></h1>
     <br>
-    <button onclick="startGame()">
-      START
+    <button id="play" onclick="startGame()">
+      PLAY
     </button>
     <div id="choices" style="display: none;">
+      <br>
       <img src="pics/rock.jpg" alt="Rock" width="200" height="200"/>
       <img src="pics/paper.jpg" alt="Paper" width="200" height="200"/>
       <img src="pics/scissors.jpg" alt="Scissors" width="200" height="200"/>
@@ -48,7 +50,5 @@
     </div>
     <div id="result">
     </div>
-
-    <script src="js/game.js"></script>
   </body>
 </html>
