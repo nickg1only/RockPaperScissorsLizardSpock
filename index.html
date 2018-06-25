@@ -33,22 +33,28 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-    <h1> Rock, Paper, Scissors, Rope</h1>
-    <h1> <small>A variant of the classic hand game</small></h1>
+    <header>
+      <h1> Rock, Paper, Scissors</h1>
+      <h1> <small>The classic hand game</small></h1>
+    </header>
     <br>
-    <button id="play" onclick="startGame()">
-      PLAY
-    </button>
-    <div id="choices" style="display: none;">
-      <br>
+    <div id="start">
+      <h1><b>
+        <button id="play" onclick="startGame()">
+          PLAY
+        </button>
+      </b></h1>
+    </div>
+    <br>
+    <div id="options" style="display: none;">
       <img src="pics/rock.jpg" alt="Rock" width="200" height="200"/>
       <img src="pics/paper.jpg" alt="Paper" width="200" height="200"/>
       <img src="pics/scissors.jpg" alt="Scissors" width="200" height="200"/>
-      <img src="pics/rope.jpg" alt="Rope" width="200" height="200"/>
     </div>
-    <div id="selections">
+    <div id="choices">
     </div>
-    <div id="result">
+    <div id="results">
     </div>
+    <h1><b><button id="replay" style="display: none;" onclick="startGame();"> REPLAY </button></b></h1>
   </body>
 </html>

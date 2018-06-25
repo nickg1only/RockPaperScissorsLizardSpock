@@ -1,32 +1,81 @@
-var play = false;
+var userChoice;
+var computerChoice;
 
 var startGame = function(){
-  var playButton = document.getElementById("play");
-  play = true;
-  playButton.disabled = true;
-  playButton.style = "color: gray";
-  while (play){
-    playGame();
-  }
-}
-
-var playGame = function(){
-  displayOptions();
-  play = false;
-}
-
-var displayOptions = function(){
-  var userHasChosen = false;
+  userChoice = "";
+  computerChoice = "";
   $(document).ready(function(){
-    $("#choices").show();
-    $("#choices img").mouseenter(function(){
+    $("#play").hide();
+    $("#start").empty();
+    $("options").hide();
+    $("#choices").empty();
+    $("#results").empty();
+    $("#replay").hide();
+  })
+  userTurn();
+}
+
+var userTurn = function(){
+  $(document).ready(function(){
+    $("#start").append("<h3>CHOOSE YOUR WEAPON</h3>");
+    $("#options").show();
+    $("#options img").css("border", "none").css("filter", "none");
+    $("#options img").mouseenter(function(){
       $(this).css("border", "2px solid red");
     }).mouseleave(function(){
       $(this).css("border", "none");
     }).click(function(){
+      userChoice = $(this).attr("alt");
       $(this).css("border", "3px solid green");
-      $("#choices img").off("mouseenter").off("mouseleave").off("click").css("filter", "grayscale(100%)");
+      $("#options img").off("mouseenter").off("mouseleave").off("click").css("filter", "grayscale(100%)");
       $(this).css("filter", "none");
+      $("#choices").show();
+      $("#choices").append("<h2>You Chose " + userChoice + ".</h2>");
+      computerTurn();
     });
   });
+}
+
+var computerTurn = function(){
+  var computerRandomNumber;
+  computerRandomNumber = Math.random();
+  if (computerRandomNumber < 1.0/3){
+    computerChoice = "Rock";
+  }
+  else if (computerRandomNumber < 2.0/3){
+    computerChoice = "Paper";
+  }
+  else{
+    computerChoice = "Scissors";
+  }
+  $(document).ready(function(){
+    $("#choices").append("<h2>Computer chose " + computerChoice + ".</h2>");
+    showResults();
+  });
+}
+
+var showResults = function(){
+  $(document).ready(function(){
+    $("#results").show();
+    if (userChoice == computerChoice){
+      $("#results").append("<h1><b>IT'S A TIE</b></h1>");
+    }
+    else{
+      if ((userChoice == "Rock" && computerChoice == "Scissors") ||
+          (userChoice == "Paper" && computerChoice == "Rock") ||
+          (userChoice == "Scissors" && computerChoice == "Paper")) {
+        $("#results").append("<h1><b>User Won!</b></h1> " + userChoice + " beats " + computerChoice);
+      }
+      else {
+        $("#results").append("<h1><b>Computer Won.</b></h1> " + computerChoice + " beats " + userChoice);
+      }
+    }
+  });
+  offerReplay();
+}
+
+var offerReplay = function(){
+  $(document).ready(function(){
+    $("#replay").show();
+  })
 }
