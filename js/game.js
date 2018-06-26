@@ -6,6 +6,7 @@ var startGame = function(){
   computerChoice = "";
   $(document).ready(function(){
     $("#play").hide();
+    $("#start").show();
     $("#start").empty();
     $("options").hide();
     $("#choices").empty();
@@ -39,14 +40,20 @@ var userTurn = function(){
 var computerTurn = function(){
   var computerRandomNumber;
   computerRandomNumber = Math.random();
-  if (computerRandomNumber < 1.0/3){
+  if (computerRandomNumber < 1.0/5){
     computerChoice = "Rock";
   }
-  else if (computerRandomNumber < 2.0/3){
+  else if (computerRandomNumber < 2.0/5){
     computerChoice = "Paper";
   }
-  else{
+  else if (computerRandomNumber < 3.0/5){
     computerChoice = "Scissors";
+  }
+  else if (computerRandomNumber < 4.0/5){
+    computerChoice = "Lizard";
+  }
+  else {
+    computerChoice = "Spock";
   }
   $(document).ready(function(){
     $("#choices").append("<h2>Computer chose " + computerChoice + ".</h2>");
@@ -56,14 +63,23 @@ var computerTurn = function(){
 
 var showResults = function(){
   $(document).ready(function(){
+    $("#start").hide();
     $("#results").show();
     if (userChoice == computerChoice){
       $("#results").append("<h1><b>IT'S A TIE</b></h1>");
     }
     else{
       if ((userChoice == "Rock" && computerChoice == "Scissors") ||
+          (userChoice == "Rock" && computerChoice == "Lizard") ||
           (userChoice == "Paper" && computerChoice == "Rock") ||
-          (userChoice == "Scissors" && computerChoice == "Paper")) {
+          (userChoice == "Paper" && computerChoice == "Spock") ||
+          (userChoice == "Scissors" && computerChoice == "Paper") ||
+          (userChoice == "Scissors" && computerChoice == "Lizard") ||
+          (userChoice == "Lizard" && computerChoice == "Paper") ||
+          (userChoice == "Lizard" && computerChoice == "Spock") ||
+          (userChoice == "Spock" && computerChoice == "Rock") ||
+          (userChoice == "Spock" && computerChoice == "Scissors")
+         ) {
         $("#results").append("<h1><b>User Won!</b></h1> " + userChoice + " beats " + computerChoice);
       }
       else {
