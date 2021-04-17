@@ -6,8 +6,7 @@ var startGame = function(){
   computerChoice = "";
   $(document).ready(function(){
     $("#play").hide();
-    $("#start").show();
-    $("#start").empty();
+    $("#start").show().empty();
     $("options").hide();
     $("#choices").empty();
     $("#results").empty();
